@@ -95,7 +95,7 @@ export default function ReportForm() {
 
       const response = await axios.post("/api/post", formData);
       setSuccessMessage("Laporan berhasil diupload");
-      if (response.status === 200) {
+      if (response.status === 201) {
         window.location.href = "/post";
       }
 
