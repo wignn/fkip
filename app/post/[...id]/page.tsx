@@ -7,6 +7,7 @@ import Image from 'next/image';
 import BackButton from '@/app/components/profilebuttons/back';
 import CommentBox from '@/app/components/CommentBox';
 
+
 const Navbar = dynamic(() => import('@/app/components/navbar'), { ssr: false });
 const Loading = dynamic(() => import('@/app/components/Loading'), { ssr: false });
 
@@ -23,6 +24,8 @@ interface Post {
     image: string;
   };
 }
+
+
 
 const Page = ({ params }: { params: { id: string } }) => {
   const [loading, setLoading] = useState<boolean>(true);

@@ -57,18 +57,14 @@ export default function PostComponent({
   const handleShare = async (
     postId: string,
     title: string,
-    imageUrl: string
   ) => {
-    const url = `https://kehilangan-fkip.vercel.app/post/${postId}`;
+    const url = `https://fkip-wigns-projects.vercel.app/post/${postId}`;
     if (navigator.share) {
       try {
-        const response = await fetch(imageUrl);
-        const blob = await response.blob();
-        const file = new File([blob], "image.jpg", { type: blob.type });
+    
         await navigator.share({
           title: title,
           url: url,
-          files: [file],
         });
         console.log("Post shared successfully");
       } catch (error) {
@@ -167,7 +163,7 @@ export default function PostComponent({
                 <Dropdown
                   onDelete={() => handleDelete(post.id, post.image || "/s")}
                   onShere={() =>
-                    handleShare(post.id, post.title, post.image || "/s")
+                    handleShare(post.id, post.title)
                   }
                   userId={user.id}
                   postId={post.userId}
