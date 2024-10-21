@@ -54,7 +54,11 @@ export default function PostComponent({
     }
   };
 
-  const handleShare = async (postId: string, title: string, imageUrl: string) => {
+  const handleShare = async (
+    postId: string,
+    title: string,
+    imageUrl: string
+  ) => {
     const url = `https://kehilangan-fkip.vercel.app/post/${postId}`;
     if (navigator.share) {
       try {
@@ -92,10 +96,10 @@ export default function PostComponent({
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="w-full max-w-3xl p-4 mb-10 mx-auto">
-        {/* Filter buttons */}
-        <div className="flex mx-auto justify-around md:gap-10 md:max-w-2xl">
+
+        <div className="flex mx-auto justify-around gap-1 md:gap-10 md:max-w-2xl">
           <button
-            className={`sm:px-4 sm:py-2 px-2 py-1 rounded-full transition-none ${
+            className={`px-3 py-1 text-xs sm:px-4 sm:py-2 sm:text-sm rounded-full transition-none ${
               filter === "All"
                 ? "bg-blue-500 text-white"
                 : "bg-gray-200 text-gray-700 hover:bg-[#bfdbfe] hover:text-blue-700 transition-all duration-100"
@@ -106,7 +110,7 @@ export default function PostComponent({
           </button>
 
           <button
-            className={`sm:px-4 sm:py-2 px-2 py-1 rounded-full transition-none ${
+            className={`px-3 py-1 text-xs sm:px-4 sm:py-2 sm:text-sm rounded-full transition-none ${
               filter === "Kehilangan Barang"
                 ? "bg-blue-500 text-white"
                 : "bg-gray-200 text-gray-700 hover:bg-[#bfdbfe] hover:text-blue-700 transition-all duration-100"
@@ -117,7 +121,7 @@ export default function PostComponent({
           </button>
 
           <button
-            className={`sm:px-4 sm:py-2 px-2 py-1 rounded-full transition-none ${
+            className={`px-3 py-1 text-xs sm:px-4 sm:py-2 sm:text-sm rounded-full transition-none ${
               filter === "Penemuan Barang"
                 ? "bg-blue-500 text-white"
                 : "bg-gray-200 text-gray-700 hover:bg-[#bfdbfe] hover:text-blue-700 transition-all duration-100"
@@ -128,7 +132,7 @@ export default function PostComponent({
           </button>
 
           <button
-            className={`sm:px-4 sm:py-2 px-2 py-1 rounded-full transition-none ${
+            className={`px-3 py-1 text-xs sm:px-4 sm:py-2 sm:text-sm rounded-full transition-none ${
               filter === "Kerusakan Fasilitas"
                 ? "bg-blue-500 text-white"
                 : "bg-gray-200 text-gray-700 hover:bg-[#bfdbfe] hover:text-blue-700 transition-all duration-100"
@@ -137,7 +141,6 @@ export default function PostComponent({
           >
             Kerusakan Fasilitas
           </button>
-
         </div>
 
         <div className="mt-6 space-y-4 flex flex-col items-center">
@@ -163,7 +166,9 @@ export default function PostComponent({
 
                 <Dropdown
                   onDelete={() => handleDelete(post.id, post.image || "/s")}
-                  onShere={() => handleShare(post.id, post.title, post.image || "/s")}
+                  onShere={() =>
+                    handleShare(post.id, post.title, post.image || "/s")
+                  }
                   userId={user.id}
                   postId={post.userId}
                   userName={user.name}
@@ -184,7 +189,11 @@ export default function PostComponent({
               )}
 
               <div className="flex justify-between mt-4">
-                <ReactButton userId={user.id} postId={post.id} userName={user.name} />
+                <ReactButton
+                  userId={user.id}
+                  postId={post.id}
+                  userName={user.name}
+                />
                 <Link href={`/post/${post.id}`}>
                   <button className="px-4 py-3 bg-blue-200 text-blue-700 rounded-full hover:text-white hover:bg-[#3b82f6] transition-all duration-200">
                     Komentar
